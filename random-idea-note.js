@@ -18,7 +18,7 @@
     function userDailyNotesList() {
         return window.roamAlphaAPI.q(`[:find (pull ?page [:block/uid :block/children]) :where [?page :node/title]]`)
             //.filter(x => x[0].uid.match(/\d\d-\d\d-\d\d\d\d/)) // removes pages that aren't daily notes (uid in format mm-dd-YYYY)
-            .filter(x => x[0].uid.match(/^🌱)/)) // modified to find pages with emoji
+            .filter(x => x[0].uid.match(/^(🌱)/)) // modified to find pages with emoji
             .filter(x => x[0].children) // removes pages containing no children
             .filter(x => {
                 if (x[0].children.length == 1) {
