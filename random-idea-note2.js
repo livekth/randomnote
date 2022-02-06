@@ -17,7 +17,8 @@
     // functions
     function userDailyNotesList() {
         return window.roamAlphaAPI.q(`[:find (pull ?page [:block/uid :block/children]) :where [?page :node/title]]`)
-            .filter(x => x[0].title.match(/^(\u{1f331})/)) // removes pages that aren't daily notes (uid in format mm-dd-YYYY)
+//            .filter(x => x[0].title.match(/^(\u{1f331})/)) // removes pages that aren't daily notes (uid in format mm-dd-YYYY)
+            .filter(x => x[0].title.match(/^(p)/)) // removes pages that aren't daily notes (uid in format mm-dd-YYYY)
             .filter(x => x[0].children) // removes pages containing no children
             .filter(x => {
                 if (x[0].children.length == 1) {
