@@ -15,11 +15,9 @@
 
 
     // functions
-    // return window.roamAlphaAPI.q(`[:find (pull ?page [:block/uid :block/children :node/title]) :where [?page :node/title]]`)
     function userDailyNotesList() {
         return window.roamAlphaAPI.q(`[:find (pull ?page [:block/uid :block/children :node/title]) :where [?page :node/title]]`)
-//            .filter(x => x[0].title.match(/^(\u{1f331})/)) // removes pages that aren't daily notes (uid in format mm-dd-YYYY)
-            .filter(x => x[0].title.include("🌱")) // removes pages that aren't daily notes (uid in format mm-dd-YYYY)
+            .filter(x => x[0].title.includes("🌱")) // removes pages that aren't daily notes (uid in format mm-dd-YYYY)
             .filter(x => x[0].children) // removes pages containing no children
             .filter(x => {
                 if (x[0].children.length == 1) {
